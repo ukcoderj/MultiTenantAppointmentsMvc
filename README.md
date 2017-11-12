@@ -48,7 +48,7 @@ When the site starts:
 
 - Click on a date to enter an appointment and add one.
 
-![Appointments View](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/4%20Appointments%20For%20Self.png?raw=true "Appointments View")
+![Appointments View](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/4%20Appointments%20For%20Self.PNG?raw=true "Appointments View")
 
 ![Create Appointment](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/5%20Appointments%20For%20Self%202.PNG?raw=true "Create Appointment")
 
