@@ -44,7 +44,7 @@ When the site starts:
 
 - Enter Company Info
 
-![Company Info](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/Screenshots/3 Company.PNG?raw=true "Company Info")
+![Company Info](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/Screenshots/3%20Company.PNG?raw=true "Company Info")
 
 - Click on a date to enter an appointment and add one.
 
