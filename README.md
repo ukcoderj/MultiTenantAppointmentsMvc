@@ -30,7 +30,8 @@ If I was making it now, I'd use .NET Core. The processes of getting data, using 
 - Open in VS2017. You will also need MS SQL Server installed on your machine.
 - Change the database urls in `AppointmentsMVC` (web.config) and `AppointmentsDb` (app.config) projects.
 - Ensure 'AppointmentsMVC' is the startup project and hit Run.
-- If there's a problem, open the package manager console. It will state packages are missing. Click 'restore' to install them. Run again.
+
+If there's a problem, open the package manager console. It will state packages are missing. Click 'restore' to install them. Run again.
 
 When the site starts:
 
@@ -86,7 +87,7 @@ When the site starts:
 
 ![Join company](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/9%20Add%20Pro%20to%20Company%204.PNG?raw=true "Join company")
 
-- Register as a new user (yes, that should be improved!)
+- Register as a new user (yes, this should be improved!)
 
 ![Join company](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/9%20Add%20Pro%20to%20Company%205.PNG?raw=true "Join company")
 
