@@ -1,0 +1,46 @@
+﻿@model AppointmentsMvc.ViewModels.LinkingKeyVM
+
+
+
+
+@{
+    ViewBag.Title = "Join " + Model?.CompanyUiDto?.CompanyName;
+}
+
+
+@if (Model != null && Model.CompanyUiDto != null && !String.IsNullOrWhiteSpace(Model.CompanyUiDto.CompanyName))
+{
+    <h1>Join Company</h1>
+
+    <h2>Are you sure you wish to join <strong>@Model.CompanyUiDto.CompanyName</strong>?</h2>
+
+    <h4>(You will need to log in or register within 20 minutes to complete this action).</h4>
+
+
+    <div class="standard-margin-top">
+
+        <div class="inline-block">
+            @using (Html.BeginForm("UseCompanyKeyConfirmed", "LK", new { id = Model.LinkingKeys[0].SpecialKey }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Yes" class="btn btn-lg btn-success" />
+                </div>
+            }
+        </div>
+        <div class="inline-block">
+            <input type="submit" value="No" class="btn btn-lg btn-danger" onclick="location.href='@Url.Action("Index", "Home")'" />
+        </div>
+    </div>
+
+}
+else
+{
+    <h2>This link is broken or has expired. Please contact the company owner for a new link.</h2>
+}
+
+
+
+
+

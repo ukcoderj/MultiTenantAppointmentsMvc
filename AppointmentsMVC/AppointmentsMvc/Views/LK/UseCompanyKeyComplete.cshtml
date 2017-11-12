@@ -1,0 +1,16 @@
+﻿@model AppointmentsMvc.ViewModels.StatusVM
+
+@{
+    ViewBag.Title = "Join Company";
+}
+
+@{ if (Model.IsSuccess)
+    {
+        <h2>@Model.SuccessMessage</h2>
+    }
+    else
+    {
+        <h2>@Model.FailMessage</h2>
+    }
+}
+

@@ -1,0 +1,186 @@
+﻿@model AppointmentsDb.Models.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyIndex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyIndex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TownCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TownCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainContactEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainContactEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainContactTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainContactTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryContactEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryContactEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryContactTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryContactTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsApproved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BannedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BannedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BannedReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BannedReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApiLiveKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApiLiveKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApiTestKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApiTestKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompanyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

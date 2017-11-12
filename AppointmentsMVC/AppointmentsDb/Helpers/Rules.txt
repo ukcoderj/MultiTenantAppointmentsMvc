@@ -1,0 +1,8 @@
+﻿Return empty lists rather than null lists.
+
+
+
+Business
+A pro can only be linked to one company.
+Only an approved company can add professionals to it's company.
+A company owner can only be linked to the company as a company owner, not an employee.

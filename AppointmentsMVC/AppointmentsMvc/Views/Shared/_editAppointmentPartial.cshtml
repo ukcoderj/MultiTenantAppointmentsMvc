@@ -1,0 +1,192 @@
+﻿@model AppointmentsMvc.ViewModels.AppointmentModalVm
+
+<style>
+  .modal-min-height {
+      min-height: 450px;
+  }
+
+  .required-field::before {
+      content: "*";
+  }
+
+  .margin150left{
+      margin-left:150px;
+  }
+</style>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">@(Model.Appointment.AppointmentIndex == 0 ? "Create Appointment" : "Edit Appointment")</h3>
+</div>
+<div>
+    @using (Html.BeginForm("EditModal", "Appt", FormMethod.Post, new { @id = "apptform" }))
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        <div class="modal-body modal-min-height">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Appointment.AppointmentId)
+            @Html.HiddenFor(model => model.Appointment.AppointmentIndex)
+            @Html.HiddenFor(model => model.Appointment.StartTime)
+
+            <div class="form-group">
+
+                <!-- visbile, but disabled if only 1 pro in the company. -->
+                <label for="ddlProfessionalModal" class="control-label col-md-3">For:</label>
+                @Html.DropDownListFor(model => model.Appointment.ProfessionalId,
+                    new SelectList(Model.ProfessionalsAccessableEmployeesDropDownModal, "Value", "Text", "Selected"),
+                    new { @class = "form-control half-margin-bottom margin150left", @id = "ddlProfessionalModal" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.StartTime_Date, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.StartTime_Date, new { htmlAttributes = new { @id="tbStartTimeDate", @class = "form-control width200 half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.StartTime_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 required-field">Time</label>
+                <div class="col-md-9">
+
+                    <div class="inline-block width100 half-margin-bottom">
+                        @Html.EditorFor(model => model.Appointment.StartTime_Hour, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="inline-block width100">
+                        @Html.EditorFor(model => model.Appointment.StartTime_Minutes, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    @Html.ValidationMessageFor(model => model.Appointment.StartTime_Hour, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Appointment.StartTime_Minutes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.DurationInMinutes, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.DurationInMinutes, new { htmlAttributes = new { @class = "form-control width100 half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.DurationInMinutes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.AppointmentType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.EnumDropDownListFor(
+                            x => x.AppointmentType,
+                            "Select",
+                            new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AppointmentType, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.AppointmentType, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EnumDropDownListFor(
+                        x => x.Appointment.AppointmentType,
+                        "Select",
+                        new { @class = "form-control half-margin-bottom" })
+                    @Html.ValidationMessageFor(model => model.Appointment.AppointmentType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.Forename, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.Forename, new { htmlAttributes = new { @class = "form-control half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.Forename, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.Surname, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.Surname, new { htmlAttributes = new { @class = "form-control half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.Surname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.TelephoneMobile, htmlAttributes: new { @class = "control-label col-md-3 required-field" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.TelephoneMobile, new { htmlAttributes = new { @class = "form-control half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.TelephoneMobile, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.EmailAddress, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Appointment.EmailAddress, new { htmlAttributes = new { @class = "form-control half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.ProfessionalNotes, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextAreaFor(model => model.Appointment.ProfessionalNotes, 3, 40, new { htmlAttributes = new { @class = "form-control half-margin-bottom width100pc" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.ProfessionalNotes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Appointment.IsCancelled, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.CheckBoxFor(model => model.Appointment.IsCancelled, new { htmlAttributes = new { @class = "form-control half-margin-bottom" } })
+                    @Html.ValidationMessageFor(model => model.Appointment.IsCancelled, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <p id="serverErrorMsg" style="color:red; padding: 5px;"></p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-danger btn-ok" id="apptsSubmitButton">Submit</a>
+        </div>
+    }
+
+</div>
+
+
+<script type="text/javascript">
+
+    $("#apptsSubmitButton").click(function () {
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("EditModal", "Appointments")",
+            data: $('#apptform').serialize(),
+            success: function (result) {
+                if (result == "success") {
+                    $('#myApptModal').modal('hide');
+                    //location.reload();
+                    var proIdModal = $('#ddlProfessionalModal').find(":selected").val();
+                    var dateToView = $('#tbStartTimeDate').val();
+                    
+                    location.href = location.protocol + '//' + location.host + location.pathname + '?startDateString=""&activeDateString=' + dateToView + '&professionalIdString=' + proIdModal;
+
+                } else {
+                    $('#serverErrorMsg').html(result);
+                }
+            }
+        });
+    });
+
+
+
+</script>

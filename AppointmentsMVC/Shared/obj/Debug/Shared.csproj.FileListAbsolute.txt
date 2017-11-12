@@ -1,0 +1,6 @@
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\bin\Debug\Shared.dll
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\bin\Debug\Shared.pdb
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\obj\Debug\Shared.csprojResolveAssemblyReference.cache
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\obj\Debug\Shared.csproj.CoreCompileInputs.cache
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\obj\Debug\Shared.dll
+C:\Users\Justi\Documents\GitAndNodeProjects\MultiTenantAppointmentsMvc\AppointmentsMVC\Shared\obj\Debug\Shared.pdb

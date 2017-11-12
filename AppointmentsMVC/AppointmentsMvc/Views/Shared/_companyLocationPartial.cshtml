@@ -1,0 +1,93 @@
+﻿@model AppointmentsDb.ModelsDto.CompanyLocationUiDto
+
+@using (Html.BeginCollectionItem("CompanyLocationGroupUiDto.CompanyLocationUiDtos"))
+{
+<div class="panel panel-default">
+    <div class="panel-heading">Location</div>
+    <div class="panel-body">
+
+        @Html.HiddenFor(model => Model.CompanyLocationId)
+        @Html.HiddenFor(model => Model.CompanyLocationIndex)
+        @Html.HiddenFor(model => Model.CreatedDate)
+        @Html.HiddenFor(model => Model.IsPostCodeAreaAndDistrictOnly)
+        @Html.HiddenFor(model => Model.IsPostCodeAreaDistrictSectorOnly)
+
+        <div class="col-md-6">
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.Postcode)
+                </div>
+                <div class="inline-block">
+                    @Html.TextBoxFor(model => Model.Postcode, new { @class = "inputValue" })                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.IsProfessionalVisitToClientLocation)
+                </div>
+                <div class="inline-block">
+                    @Html.CheckBoxFor(model => Model.IsProfessionalVisitToClientLocation)
+                    @Html.ValidationMessageFor(model => Model.IsProfessionalVisitToClientLocation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.IsDeleted)
+                </div>
+                <div class="inline-block">
+                    @Html.CheckBoxFor(model => Model.IsDeleted)
+                    @Html.ValidationMessageFor(model => Model.IsDeleted, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            @Html.ValidationMessageFor(model => Model.Postcode, "", new { @class = "text-danger", style="margin-left:-15px;" })
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.AddressLine1)
+                </div>
+                <div class="inline-block">
+                    @Html.EditorFor(model => Model.AddressLine1)
+                    @Html.ValidationMessageFor(model => Model.AddressLine1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.AddressLine2)
+                </div>
+                <div class="inline-block">
+                    @Html.EditorFor(model => Model.AddressLine2)
+                    @Html.ValidationMessageFor(model => Model.AddressLine2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.TownCity)
+                </div>
+                <div class="inline-block">
+                    @Html.EditorFor(model => Model.TownCity)
+                    @Html.ValidationMessageFor(model => Model.TownCity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="inline-block width200">
+                    @Html.LabelFor(model => Model.County)
+                </div>
+                <div class="inline-block">
+                    @Html.EditorFor(model => Model.County)
+                    @Html.ValidationMessageFor(model => Model.County, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+}

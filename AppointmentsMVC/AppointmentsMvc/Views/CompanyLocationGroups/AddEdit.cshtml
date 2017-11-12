@@ -1,0 +1,99 @@
+﻿@model AppointmentsMvc.ViewModels.CompanyLocationGroupEditVm
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+  .inline-block {
+      display: inline-block;
+  }
+
+  .validation-warning {
+      color: red;
+      font-weight: bold;
+  }
+</style>
+
+<script>
+
+    $(function () {
+        /* Add a company location row.*/
+        var locationsDiv = $('#locationsDiv');
+        var url = '@Url.Action("AddCompanyLocation", "CompanyLocationGroups")';
+        $('#addLocation').click(function () {
+            $.get(url, function (response) {
+                locationsDiv.prepend(response);
+            });
+        });
+    });
+
+</script>
+
+
+
+<h2 style="margin: 20px 0 20px 15px;">Company Locations</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal" style="@(Model.CompanyLocationGroupUiDto.AuthState_OnlyTrustOnGeneration < Shared.Enums.AuthorizationState.CreateReadUpdate ? "pointer-events: none;" : "")">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CompanyLocationGroupUiDto.CompanyLocationGroupId)
+        @Html.HiddenFor(model => model.CompanyLocationGroupUiDto.CompanyLocationGroupIndex)
+        @Html.HiddenFor(model => model.CompanyLocationGroupUiDto.CreatedDate)
+        @Html.HiddenFor(model => model.CompanyLocationGroupUiDto.HasProfessionalVisitsClientLocations)
+        @Html.HiddenFor(model => model.CompanyLocationGroupUiDto.AuthState_OnlyTrustOnGeneration)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.CompanyLocationGroupUiDto.LocationGroupName)
+                    @Html.EditorFor(model => model.CompanyLocationGroupUiDto.LocationGroupName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyLocationGroupUiDto.LocationGroupName, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.CompanyLocationGroupUiDto.IsDeleted)<br />
+                    @Html.EditorFor(model => model.CompanyLocationGroupUiDto.IsDeleted)
+                    @Html.ValidationMessageFor(model => model.CompanyLocationGroupUiDto.IsDeleted, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <hr />
+
+        @if ((Model.CompanyLocationGroupUiDto.AuthState_OnlyTrustOnGeneration == Shared.Enums.AuthorizationState.CreateReadUpdate))
+        {
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button type="button" id="addLocation" class="btn btn-default">Add Location</button>
+                </div>
+                <div class="col-md-offset-6 col-md-3" style="text-align:right;">
+                    @Html.ActionLink("Cancel", "Index", null, new { @style = "margin-right:30px;" })
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+
+        <div class="text-danger">
+            @Html.DisplayFor(model => Model.ValidationMessage)
+        </div>
+
+        <div id="locationsDiv">
+            @foreach (var item in Model.CompanyLocationGroupUiDto.CompanyLocationUiDtos)
+            {
+                @Html.Partial("_companyLocationPartial", item)
+            }
+        </div>
+
+    </div>
+}
+
+<div>
+
+</div>

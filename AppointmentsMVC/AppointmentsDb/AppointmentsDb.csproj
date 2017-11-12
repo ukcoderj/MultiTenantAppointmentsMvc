@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B25464C-19F9-40B4-947B-0B4C7E3E2606}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppointmentsDb</RootNamespace>
+    <AssemblyName>AppointmentsDb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\EntityDataReader.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\SpecialKeyGenerator.cs" />
+    <Compile Include="MapperStart\AutoMapper_Startup.cs" />
+    <Compile Include="Migrations\201701302021059_Init_Professional_Company_LinkingKey.cs" />
+    <Compile Include="Migrations\201701302021059_Init_Professional_Company_LinkingKey.Designer.cs">
+      <DependentUpon>201701302021059_Init_Professional_Company_LinkingKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702021235270_Appointments_2.cs" />
+    <Compile Include="Migrations\201702021235270_Appointments_2.Designer.cs">
+      <DependentUpon>201702021235270_Appointments_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702021254151_Appointments_3.cs" />
+    <Compile Include="Migrations\201702021254151_Appointments_3.Designer.cs">
+      <DependentUpon>201702021254151_Appointments_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702131920065_ProCo_Property_Updates.cs" />
+    <Compile Include="Migrations\201702131920065_ProCo_Property_Updates.Designer.cs">
+      <DependentUpon>201702131920065_ProCo_Property_Updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702201946219_MassageType.cs" />
+    <Compile Include="Migrations\201702201946219_MassageType.Designer.cs">
+      <DependentUpon>201702201946219_MassageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702201954049_MassageType1.cs" />
+    <Compile Include="Migrations\201702201954049_MassageType1.Designer.cs">
+      <DependentUpon>201702201954049_MassageType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702262058421_AuthInSameDb_1.cs" />
+    <Compile Include="Migrations\201702262058421_AuthInSameDb_1.Designer.cs">
+      <DependentUpon>201702262058421_AuthInSameDb_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703202042367_CompanyLocationsAndGroups.cs" />
+    <Compile Include="Migrations\201703202042367_CompanyLocationsAndGroups.Designer.cs">
+      <DependentUpon>201703202042367_CompanyLocationsAndGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703202047382_CompanyLocationsAndGroups1.cs" />
+    <Compile Include="Migrations\201703202047382_CompanyLocationsAndGroups1.Designer.cs">
+      <DependentUpon>201703202047382_CompanyLocationsAndGroups1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703202124379_CompanyLocationGroups_ProDelNullable.cs" />
+    <Compile Include="Migrations\201703202124379_CompanyLocationGroups_ProDelNullable.Designer.cs">
+      <DependentUpon>201703202124379_CompanyLocationGroups_ProDelNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703202150407_CompanyLocations_CreationLog.cs" />
+    <Compile Include="Migrations\201703202150407_CompanyLocations_CreationLog.Designer.cs">
+      <DependentUpon>201703202150407_CompanyLocations_CreationLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212159296_LocationGroupName_Mandatory.cs" />
+    <Compile Include="Migrations\201703212159296_LocationGroupName_Mandatory.Designer.cs">
+      <DependentUpon>201703212159296_LocationGroupName_Mandatory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272120583_CompanyLocationGroups_UpdateInfo.cs" />
+    <Compile Include="Migrations\201703272120583_CompanyLocationGroups_UpdateInfo.Designer.cs">
+      <DependentUpon>201703272120583_CompanyLocationGroups_UpdateInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704051713577_ProfessionalWorkingHours.cs" />
+    <Compile Include="Migrations\201704051713577_ProfessionalWorkingHours.Designer.cs">
+      <DependentUpon>201704051713577_ProfessionalWorkingHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelsDto\AppointmentForProUiDto.cs" />
+    <Compile Include="ModelsDto\AuthorizationStateBase.cs" />
+    <Compile Include="ModelsDto\CompanyLocationGroupUiDto.cs" />
+    <Compile Include="ModelsDto\CompanyLocationUiDto.cs" />
+    <Compile Include="ModelsDto\CompanyUiDto.cs" />
+    <Compile Include="ModelsDto\Custom\AccessibleEmployee.cs" />
+    <Compile Include="ModelsDto\LinkingKeyUiDto.cs" />
+    <Compile Include="ModelsDto\ProfessionalUiDto.cs" />
+    <Compile Include="ModelsDto\ProfessionalWorkingHourUiDto.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\AppointmentsDbContext.cs" />
+    <Compile Include="Models\CrudState.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanyLocation.cs" />
+    <Compile Include="Models\CompanyLocationGroup.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LinkingKey.cs" />
+    <Compile Include="Models\Professional.cs" />
+    <Compile Include="Models\ProfessionalWorkingHour.cs" />
+    <Compile Include="Pattern\GenericRepository.cs" />
+    <Compile Include="Pattern\RepositoriesWithGuids.cs" />
+    <Compile Include="Pattern\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AccessQueries.cs" />
+    <Compile Include="Queries\AppointmentQueries.cs" />
+    <Compile Include="Queries\CompanyLocationGroupQueries.cs" />
+    <Compile Include="Queries\CompanyQueries.cs" />
+    <Compile Include="Queries\LinkingKeyQueries.cs" />
+    <Compile Include="Queries\ProfessionalQueries.cs" />
+    <Compile Include="Queries\ProfessionalWorkingHoursQueries.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Helpers\Rules.txt" />
+    <Content Include="ModelsDto\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{baf51832-0424-499f-9004-6bcdf72570bc}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701302021059_Init_Professional_Company_LinkingKey.resx">
+      <DependentUpon>201701302021059_Init_Professional_Company_LinkingKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702021235270_Appointments_2.resx">
+      <DependentUpon>201702021235270_Appointments_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702021254151_Appointments_3.resx">
+      <DependentUpon>201702021254151_Appointments_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131920065_ProCo_Property_Updates.resx">
+      <DependentUpon>201702131920065_ProCo_Property_Updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201946219_MassageType.resx">
+      <DependentUpon>201702201946219_MassageType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201954049_MassageType1.resx">
+      <DependentUpon>201702201954049_MassageType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702262058421_AuthInSameDb_1.resx">
+      <DependentUpon>201702262058421_AuthInSameDb_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202042367_CompanyLocationsAndGroups.resx">
+      <DependentUpon>201703202042367_CompanyLocationsAndGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202047382_CompanyLocationsAndGroups1.resx">
+      <DependentUpon>201703202047382_CompanyLocationsAndGroups1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202124379_CompanyLocationGroups_ProDelNullable.resx">
+      <DependentUpon>201703202124379_CompanyLocationGroups_ProDelNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202150407_CompanyLocations_CreationLog.resx">
+      <DependentUpon>201703202150407_CompanyLocations_CreationLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212159296_LocationGroupName_Mandatory.resx">
+      <DependentUpon>201703212159296_LocationGroupName_Mandatory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272120583_CompanyLocationGroups_UpdateInfo.resx">
+      <DependentUpon>201703272120583_CompanyLocationGroups_UpdateInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704051713577_ProfessionalWorkingHours.resx">
+      <DependentUpon>201704051713577_ProfessionalWorkingHours.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

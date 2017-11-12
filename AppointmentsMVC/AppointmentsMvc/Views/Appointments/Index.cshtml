@@ -1,0 +1,368 @@
+﻿@model AppointmentsMvc.ViewModels.CalendarVm
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+<script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
+
+<style>
+  html, body {
+      background: white;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      overflow: -moz-scrollbars-none;
+      font-family: arial, helvetica, sans-serif;
+  }
+
+  .container-grab {
+      overflow: scroll;
+      cursor: grab;
+      cursor: -o-grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+  }
+
+
+  /* container for whole control */
+  .date-control-container {
+      height: 70vh; /* controls how many hours we'll see*/
+      background-color: cornflowerblue;
+      margin: 10px 20px 0 10px;
+      overflow: hidden;
+  }
+
+
+  /* container for top row of dates */
+  .dates-container {
+      position: relative;
+      background-color: #EEEEEE;
+      height: 50px;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap; /*stops newline of divs*/
+      margin-top: 5px;
+  }
+
+  /* each individual date */
+  .date {
+      display: inline-block;
+      height: 30px;
+      width: 100px;
+      background-color: lightgray;
+      margin-top: 15px;
+      margin-right: 5px;
+      overflow: hidden;
+  }
+
+  .date-selected {
+      background-color: lightgreen !important;
+  }
+
+
+
+  /* container for all hours */
+  .hour-container {
+      position: relative;
+      background-color: lightgray;
+      height: calc(100% - 50px);
+      height: -moz-calc(100% - 50px);
+      height: -webkit-calc(100% - 50px);
+      width: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      white-space: nowrap; /*stops newline of divs*/
+  }
+
+  /* each hour */
+  .hour {
+      display: block;
+      height: 30px; /* the height of each hour */
+      width: 100%;
+      background-color: white;
+      margin: 1.5px;
+      overflow: hidden;
+  }
+
+  .hour0, .hour1, .hour2, .hour3, .hour4, .hour5 .hour19, .hour20, .hour21, .hour22, .hour23 {
+      background-color: #f1f1f1 !important;
+  }
+
+  /* the standard text in the control - e.g. 8am */
+  .hourText {
+      font-size: 8pt;
+      display: inline-block;
+      vertical-align: top;
+  }
+
+
+  /* standard appointment container */
+  .appt-no-height {
+      display: inline-block;
+      vertical-align: top;
+      width: 80%;
+      background-color: silver;
+      position: absolute;
+      margin: 0 0 0 10px;
+      border: solid 1px black;
+      border-radius: 5px;
+      padding: 3px;
+      font-size: 0.9em;
+  }
+
+
+  /* Employee Selections */
+  .professional-select-container {
+      margin: 70px 0 0 10px;
+  }
+</style>
+
+<script>
+
+    $(function () {
+
+        // Clear the existing appts.
+        $('.appt-no-height').remove();
+
+        var scrollToWorkingHours = function () {
+            $('.hour-container').animate({ scrollTop: '125px' }, 'slow');
+        };
+
+        /* Enables scrolling to a set position  scrollToId('.hour-container', '#hour4');*/
+        var scrollToId = function (scrollContainer, aid) {
+            var aTag = $(aid);
+            $(scrollContainer).animate({ scrollTop: aTag.offset().top }, 'slow');
+        };
+
+        /* Get the value from the professional ddl*/
+        var getSelectedProfessionalId = function () {
+            var professionalIdForAppts = $('#ddlProfessional').find(":selected").val();
+            return professionalIdForAppts;
+        }
+
+        var clearAppointments = function () {
+            // Clear the existing appts.
+            $('.appt-no-height').remove();
+        };
+
+        var apptNewModalDialog = function (startDate, startHour) {
+            var professionalId = getSelectedProfessionalId();
+
+            var url = "/Appointments/EditModalNew"; // the url to the controller
+            $.get(url + '?startDateStr=' + startDate + '&startHour=' + startHour + '&professionalId=' + professionalId, function (data) {
+                $('#partialInfo').html(data);
+                $('#myApptModal').modal('show');
+            });
+        };
+
+        var apptEditModalDialog = function (id) {
+
+            var professionalIdForAppts = getSelectedProfessionalId();
+
+            var url = "/Appointments/EditModal"; // the url to the controller
+            $.get(url + '?id=' + id + '&professionalId=' + professionalIdForAppts, function (data) {
+                $('#partialInfo').html(data);
+                $('#myApptModal').modal('show');
+            });
+        };
+
+        var showAppointmentsForDate = function (calendarDate) {
+
+            // Get the selectedvalue of the dropdown
+            var professionalIdForAppts = getSelectedProfessionalId();
+
+            $.get('@Url.Action("GetAppointmentsForDate", "Appointments")', { apptDate: calendarDate, professionalId: professionalIdForAppts }, function (data) {
+
+                clearAppointments();
+
+                // Settings
+                var marginLeftPerItem = 20;
+                var oneHourPxHeight = 30;
+
+                var oneMinutePxHeight = oneHourPxHeight / 60;
+
+                // Add appts in the right position
+                for (var i = 0; i < data.length; i++) {
+                    var row = data[i];
+                    var apptRow = $('#hour' + row.StartTime_Hour);
+
+                    var minutesText = row.StartTime_Minutes === 0 ? '00' : row.StartTime_Minutes;
+
+                    apptRow.append('<div id="appt' + row.AppointmentId + '" class="appt-no-height">' + row.StartTime_Hour + ":" +
+                        minutesText + ' (' + row.DurationInMinutes + 'm)' + '&nbsp;' + row.Forename + ' ' + row.Surname + ' (' + row.AppointmentTypeAsDisplay + ')</div>');
+
+                    var objHeight = (row.DurationInMinutes * oneMinutePxHeight) + 'px';
+                    var marginTop = (row.StartTime_Minutes * oneMinutePxHeight) + 'px';
+                    var marginLeft = ((apptRow.children().length - 1) * marginLeftPerItem) + 'px';
+
+                    var thisAppt = $("#appt" + row.AppointmentId);
+                    thisAppt.css("height", objHeight);
+                    thisAppt.css("margin-top", marginTop);
+                    thisAppt.css("margin-left", marginLeft);
+
+                    //default color is silver on appt-no-height.
+                    switch (row.AppointmentType) {
+                        case 2:
+                            thisAppt.css("background-color", 'lightblue');
+                            break;
+                        case 1024:
+                            thisAppt.css("background-color", 'lightgreen');
+                            break;
+                        default:
+                            // do nothing.
+                            break;
+                    }
+
+
+                }
+
+                /* click event for editing an appt*/
+                $('.appt-no-height').on('click', function (event) {
+                    // dont allow the event to propagate to hour click.
+                    event.stopPropagation();
+                    var fullId = this.id.replace('appt', '');
+                    apptEditModalDialog(fullId);
+                });
+
+                /* scroll to a better position */
+                scrollToWorkingHours();
+            });
+        };
+
+
+
+        /* click event on the hour */
+        $('.hour').on('click', function (elm) {
+            var startHourOnly = this.id.replace('hour', '');
+            var startHour = parseInt(startHourOnly);
+
+            var selectedDateDiv = $('.date-selected');
+
+            // Make the modal here!
+            apptNewModalDialog(selectedDateDiv[0].innerText, startHour);
+        });
+
+
+        /* Get the appointments for whatever date is selected */
+        var getAppointmentsForSelectedDate = function () {
+            var selectedDateDiv = $('.date-selected');
+            var parts = selectedDateDiv[0].innerText.split('/');
+            showAppointmentsForDate(parts[2] + '-' + parts[1] + '-' + parts[0]);
+        }
+
+
+        // initial data load.
+        window.setTimeout(function () {
+            getAppointmentsForSelectedDate();
+        }, 1000);
+
+        $("#ddlProfessional").on("change", function () {
+            clearAppointments();
+            getAppointmentsForSelectedDate();
+        });
+
+
+        /* Dates ensure clicked, not dragged! */
+        var $dateControl = $('.date');
+        $dateControl.on('mousedown', function (evt) {
+            $dateControl.on('mouseup mousemove', function handler(evt) {
+                if (evt.type === 'mouseup') {
+                    // click
+                    $('.date').removeClass('date-selected');
+
+                    $(evt.currentTarget).addClass('date-selected');
+                    showAppointmentsForDate(evt.currentTarget.innerHTML);
+                } else {
+                    // drag
+                }
+                $dateControl.off('mouseup mousemove', handler);
+            });
+        });
+
+
+        /* on load, scroll to a sensible hour */
+        scrollToWorkingHours();
+
+
+
+
+        /*end page load*/
+    });
+
+
+</script>
+
+
+<div class="professional-select-container">
+
+    <!-- visbile, but disabled if only 1 pro in the company. -->
+    @Html.DropDownListFor(model => model.CurrentProfessionalId,
+                    new SelectList(Model.ProfessionalsAccessableEmployeesDropDown, "Value", "Text", "Selected"),
+                    (Model.ProfessionalsAccessableEmployeesDropDown != null && Model.ProfessionalsAccessableEmployeesDropDown.Count() > 1) ?
+                    new { @class = "form-control half-margin-bottom", @id = "ddlProfessional" } as object :
+                    new { @class = "form-control half-margin-bottom", @id = "ddlProfessional", disabled = "disabled" } as object)
+</div>
+
+
+<div class="date-control-container">
+
+    <!-- TODO:
+       http://stackoverflow.com/questions/28576636/mouse-click-and-drag-instead-of-horizontal-scroll-bar-to-view-full-content-of-c
+    -->
+    <div class="dates-container">
+        <div class="dragscroll container-grab">
+            @foreach (var dt in Model.AvailableDates)
+            {
+                <div class="date @(@Model.ActiveDate.Date == dt.Date ? "date-selected" : "")">@dt.ToShortDateString()</div>}
+        </div>
+    </div>
+
+
+    <div class="hour-container">
+        <div>
+            <div id="hour0" class="hour hour0"><div class="hourText">12am</div></div>
+            <div id="hour1" class="hour hour1"><div class="hourText">1am</div></div>
+            <div id="hour2" class="hour hour2"><div class="hourText">2am</div></div>
+            <div id="hour3" class="hour hour3"><div class="hourText">3am</div></div>
+            <div id="hour4" class="hour hour4"><div class="hourText">4am</div></div>
+            <div id="hour5" class="hour hour5"><div class="hourText">5am</div></div>
+            <div id="hour6" class="hour hour6"><div class="hourText">6am</div></div>
+            <div id="hour7" class="hour hour7"><div class="hourText">7am</div></div>
+            <div id="hour8" class="hour hour8">
+                <div class="hourText">8am</div>
+                @*<div class="appt-no-height dummy-appt">Test</div>*@
+            </div>
+            <div id="hour9" class="hour hour9"><div class="hourText">9am</div></div>
+            <div id="hour10" class="hour hour10"><div class="hourText">10am</div></div>
+            <div id="hour11" class="hour hour11"><div class="hourText">11am</div></div>
+            <div id="hour12" class="hour hour12"><div class="hourText">12pm</div></div>
+            <div id="hour13" class="hour hour13"><div class="hourText">1pm</div></div>
+            <div id="hour14" class="hour hour14"><div class="hourText">2pm</div></div>
+            <div id="hour15" class="hour hour15"><div class="hourText">3pm</div></div>
+            <div id="hour16" class="hour hour16"><div class="hourText">4pm</div></div>
+            <div id="hour17" class="hour hour17"><div class="hourText">5pm</div></div>
+            <div id="hour18" class="hour hour18"><div class="hourText">6pm</div></div>
+            <div id="hour19" class="hour hour19"><div class="hourText">7pm</div></div>
+            <div id="hour20" class="hour hour20"><div class="hourText">8pm</div></div>
+            <div id="hour21" class="hour hour21"><div class="hourText">9pm</div></div>
+            <div id="hour22" class="hour hour22"><div class="hourText">10pm</div></div>
+            <div id="hour23" class="hour hour23"><div class="hourText">11pm</div></div>
+
+            <div style="height:200px; background-color:lightgray;"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--  this is the modal dialog that will house the partial content-->
+<div id="myApptModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="partialInfo"></div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,1 @@
+﻿Only use DTO's when it's really necessary (e.g. we need to hide some fields.)

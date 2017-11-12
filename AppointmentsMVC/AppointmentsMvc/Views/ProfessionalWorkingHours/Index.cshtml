@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AppointmentsMvc.ViewModels.ProfessionalWorkingHourVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="margin: 20px 0 20px 15px;">Set Working Hours</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        WARNING: Any changes you make will not be reflected in existing appointments (e.g. cancellations will not happen automatically).
+    </p>
+
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <button type="button" id="addLocation" class="btn btn-default">Add Time</button>
+        </div>
+        <div class="col-md-offset-6 col-md-3" style="text-align:right;">
+            @Html.ActionLink("Cancel", "Index", null, new { @style = "margin-right:30px;" })
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr style="border-top: none;">
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.DayOfWeek)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.EndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.CompanyLocationGroupId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.IncludeBankHolidays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalWorkingHourUiDto.IsDeleted)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td colspan="5">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(modelItem => item.ProfessionalWorkingHourUiDto.ProfessionalWorkingHourId)
+                        @Html.HiddenFor(modelItem => item.ProfessionalWorkingHourUiDto.ProfessionalWorkingHourIndex)
+                        @Html.ValidationMessageFor(model => item.ProfessionalWorkingHourUiDto, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => item.ProfessionalWorkingHourUiDto.StartTime, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => item.ProfessionalWorkingHourUiDto.EndTime, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => item.ProfessionalWorkingHourUiDto.IncludeBankHolidays, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => item.ProfessionalWorkingHourUiDto.IsDeleted, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EnumDropDownListFor(model => item.ProfessionalWorkingHourUiDto.DayOfWeek, "Select Day", htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => item.ProfessionalWorkingHourUiDto.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => item.ProfessionalWorkingHourUiDto.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => item.ProfessionalWorkingHourUiDto.CompanyLocationGroupId,
+             new SelectList(item.ProfessionalsAccessableCompanyLocationGroups, "Value", "Text", "Selected"),
+             new { @class = "form-control half-margin-bottom margin150left", @id = "ddlCompanyLocationGroup" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => item.ProfessionalWorkingHourUiDto.IncludeBankHolidays)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => item.ProfessionalWorkingHourUiDto.IsDeleted)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

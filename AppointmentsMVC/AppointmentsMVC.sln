@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentsDb", "AppointmentsDb\AppointmentsDb.csproj", "{4B25464C-19F9-40B4-947B-0B4C7E3E2606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{493F6498-971F-48D5-9016-97B2F66CC10E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentsMvc", "AppointmentsMvc\AppointmentsMvc.csproj", "{49E95FAA-DAFD-4FD5-B584-983CB3822FFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{BAF51832-0424-499F-9004-6BCDF72570BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B25464C-19F9-40B4-947B-0B4C7E3E2606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B25464C-19F9-40B4-947B-0B4C7E3E2606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B25464C-19F9-40B4-947B-0B4C7E3E2606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B25464C-19F9-40B4-947B-0B4C7E3E2606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493F6498-971F-48D5-9016-97B2F66CC10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493F6498-971F-48D5-9016-97B2F66CC10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493F6498-971F-48D5-9016-97B2F66CC10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493F6498-971F-48D5-9016-97B2F66CC10E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E95FAA-DAFD-4FD5-B584-983CB3822FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E95FAA-DAFD-4FD5-B584-983CB3822FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E95FAA-DAFD-4FD5-B584-983CB3822FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E95FAA-DAFD-4FD5-B584-983CB3822FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF51832-0424-499F-9004-6BCDF72570BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF51832-0424-499F-9004-6BCDF72570BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF51832-0424-499F-9004-6BCDF72570BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF51832-0424-499F-9004-6BCDF72570BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://justinjjones.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AppointmentsDb\\AppointmentsDb.csproj
+		SccProjectName1 = AppointmentsDb
+		SccLocalPath1 = AppointmentsDb
+		SccProjectUniqueName2 = Testing\\Testing.csproj
+		SccProjectName2 = Testing
+		SccLocalPath2 = Testing
+		SccProjectUniqueName3 = AppointmentsMvc\\AppointmentsMvc.csproj
+		SccProjectName3 = AppointmentsMvc
+		SccLocalPath3 = AppointmentsMvc
+		SccProjectUniqueName4 = Shared\\Shared.csproj
+		SccProjectName4 = Shared
+		SccLocalPath4 = Shared
+	EndGlobalSection
+EndGlobal

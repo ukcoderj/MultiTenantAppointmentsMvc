@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AppointmentsDb.ModelsDto.CompanyLocationGroupUiDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+
+    <input type="button" class="btn btn-primary" value="Add New" onclick="location.href='@Url.Action("AddEdit", "CompanyLocationGroups" )'" />
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasProfessionalVisitsClientLocations)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasProfessionalVisitsClientLocations)
+        </td>
+        <td>
+            @if (item.AuthState_OnlyTrustOnGeneration == Shared.Enums.AuthorizationState.CreateReadUpdate)
+            {
+                @Html.ActionLink("Edit", "AddEdit", new { id = item.CompanyLocationGroupId })
+            }
+            else
+            {
+                @Html.ActionLink("Details", "AddEdit", new { id = item.CompanyLocationGroupId })
+            }
+            
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <style>
+      /* TODO: Move to css sheet at some point*/
+
+      .standard-margin-top {
+          margin-top: 25px;
+      }
+
+      .half-margin-bottom {
+          margin-bottom: 12.5px;
+      }
+
+      .width100pc{
+          width: 100%!important;
+      }
+
+      .inline-block {
+          display: inline-block;
+      }
+
+      .width100 {
+          width: 100px;
+      }
+
+      .width200 {
+          width: 200px;
+      }
+    </style>
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-93491666-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type='text/javascript'>
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;) r('track' + i.pop()); return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
+        }({
+            instrumentationKey: '25d03a6d-7489-4e18-b53b-6e2115b5ae9a'
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Appointment Booking", "Index", "Appointments", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
+
+                        <li class="dropdown">
+                            <a id="dropMessage" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+
+                                <li>@Html.ActionLink("Profile", "Edit", "ProfessionalProfile")</li>
+                                <li role="presentation" class="divider"></li>
+
+                                <li>@Html.ActionLink("Set Working Hours", "Index", "ProfessionalWorkingHours")</li>
+                                <li role="presentation" class="divider"></li>
+
+                                <li>@Html.ActionLink("Company", "Edit", "CompanyProfile")</li>
+                                <li role="presentation" class="divider"></li>
+
+                                <li>@Html.ActionLink("Company Locations", "Index", "CompanyLocationGroups")</li>
+                                <li role="presentation" class="divider"></li>
+
+                                <li>@Html.ActionLink("Keys", "Index", "LK")</li>
+                                <li role="presentation" class="divider"></li>
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+        @RenderBody()
+
+
+        @*<hr />*@
+
+        <div style="margin-top:25px;">
+            <p>&copy; @DateTime.Now.Year</p>
+        </div>
+
+        <footer>
+            
+        </footer>
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

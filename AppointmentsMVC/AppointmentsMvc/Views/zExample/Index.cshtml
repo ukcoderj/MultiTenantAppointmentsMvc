@@ -1,0 +1,153 @@
+﻿@model IEnumerable<AppointmentsDb.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyIndex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TownCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainContactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainContactTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryContactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryContactTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BannedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BannedReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApiLiveKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApiTestKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyIndex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressLine1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressLine2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TownCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainContactEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainContactTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryContactEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryContactTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsApproved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BannedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BannedReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApiLiveKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApiTestKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CompanyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CompanyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyId })
+        </td>
+    </tr>
+}
+
+</table>

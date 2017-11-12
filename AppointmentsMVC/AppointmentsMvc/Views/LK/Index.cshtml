@@ -1,0 +1,93 @@
+﻿@model AppointmentsMvc.ViewModels.LinkingKeyVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Company Keys</h2>
+
+@if (Model.LinkingKeys != null && Model.LinkingKeys.Any())
+{
+    <p>These keys have been generated to add professionals to your company. To add more, click 'Add a professional to your company'.</p>
+}
+else if(Model.CompanyUiDto != null && Model.CompanyUiDto.UILoadOnly_IsUserCompanyOwner)
+{
+    <p>To create links for adding professionals to your company, click 'Add a professional to your company'.</p>
+}
+else
+{
+    <p>You must be a company owner to access this page.</p>
+}
+
+
+@if (Model.CompanyUiDto != null && Model.CompanyUiDto.UILoadOnly_IsUserCompanyOwner)
+{
+    <br/>
+    <p>
+        @Html.ActionLink("Add a professional to your company", "CreateCompanyProKey")
+    </p>
+}
+
+
+@if (Model.LinkingKeys != null && Model.LinkingKeys.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkingKeys[0].AvailableForEmailAddress)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.LinkingKeys[0].CreatedDateTime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.LinkingKeys[0].SpecialKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkingKeys[0].ExpiryDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkingKeys[0].UsedDateTime)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.LinkingKeys)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableForEmailAddress)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDateTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiryDateTime)
+                </td>
+                <td>
+                    @{
+                        if (item.UsedDateTime > new DateTime())
+                        {
+                            @Html.DisplayFor(modelItem => item.UsedDateTime)
+                        }
+                        else
+                        {
+                            <p>-</p>
+                        }
+                    }
+
+                </td>
+            </tr>
+                        }
+
+    </table>
+
+
+}
