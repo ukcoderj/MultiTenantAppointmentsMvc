@@ -36,7 +36,7 @@ When the site starts:
 
 - Click 'Register' in the top right hand corner to register a new user (single factor auth, so you can add anything in the email field).
 
-![Register new user](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/1 Register.PNG?raw=true)
+![Register new user](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/1Register.PNG?raw=true)
 
 ![alt tag](https://github.com/HockeyJustin/UkAccidentStatistics/blob/master/src/AccidentProcessor/Resources/Reference/_area_Newbury_To_Maidenhead_A339_A34_M4_A308M.png?raw=true)
 
