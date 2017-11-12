@@ -38,11 +38,9 @@ When the site starts:
 
 ![Register new user](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/1%20Register.PNG?raw=true)
 
-![alt tag](https://github.com/HockeyJustin/UkAccidentStatistics/blob/master/src/AccidentProcessor/Resources/Reference/_area_Newbury_To_Maidenhead_A339_A34_M4_A308M.png?raw=true)
-
 - Enter Profile
 
-![Profile](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/2 Profile.PNG?raw=true "Profile")
+![Profile](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/2Profile.PNG?raw=true "Profile")
 
 - Enter Company Info
 
