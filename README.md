@@ -40,7 +40,7 @@ When the site starts:
 
 - Enter Profile
 
-![Profile](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/2Profile.PNG?raw=true "Profile")
+![Profile](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/blob/master/Screenshots/2%20Profile.PNG "Profile")
 
 - Enter Company Info
 
