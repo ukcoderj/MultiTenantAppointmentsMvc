@@ -1,10 +1,10 @@
-# Appointment Booking Basic
+# Basic MVC Appointment Booking Application
 
 Basic Multi-Tenant appointment booking system created to play with MVC, Authentication, Patterns and Entity Framework.
 
 It's nowehere near complete and a bit hacky in parts, but there's also plenty of good stuff in there!
 
-I used .NET full instead of .NET Core as when I started .NET Core was at 1.1 when I started and the .NET Core version of Entity Framework didn't fit my needs (you couldn't make MVC models from EF in another project easily).
+Uses .NET instead of .NET Core. When I started .NET Core was at 1.1 and the related version of Entity Framework didn't fit my needs (you couldn't make MVC models from EF in another project easily).
 
 If I was making it now, I'd use .NET Core. The processes of getting data, using patterns and presenting to a UI would be very similar.
 
