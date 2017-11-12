@@ -2,9 +2,9 @@
 
 Basic Multi-Tenant appointment booking system created to play with MVC, Authentication, Patterns and Entity Framework.
 
-It's a bit hacky in parts, but there's also plenty of good stuff in there!
+It's nowehere near complete and a bit hacky in parts, but there's also plenty of good stuff in there!
 
-I used .NET full instead of .NET Core as .NET Core was at 1.1 when I started and the .NET Core version of Entity Framework didn't fit my needs (you couldn't make MVC models from EF in another project easily).
+I used .NET full instead of .NET Core as when I started .NET Core was at 1.1 when I started and the .NET Core version of Entity Framework didn't fit my needs (you couldn't make MVC models from EF in another project easily).
 
 If I was making it now, I'd use .NET Core. The processes of getting data, using patterns and presenting to a UI would be very similar.
 
@@ -36,84 +36,84 @@ When the site starts:
 
 - Click 'Register' in the top right hand corner to register a new user (single factor auth, so you can add anything in the email field).
 
-![Register new user](/Screenshots/1 Register.PNG?raw=true "Register new user")
+![Register new user](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/1 Register.PNG?raw=true "Register new user")
 
 - Enter Profile
 
-![Profile](/Screenshots/2 Profile.PNG?raw=true "Profile")
+![Profile](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/2 Profile.PNG?raw=true "Profile")
 
 - Enter Company Info
 
-![Company Info](/Screenshots/3 Company.PNG?raw=true "Company Info")
+![Company Info](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/3 Company.PNG?raw=true "Company Info")
 
 - Click on a date to enter an appointment and add one.
 
-![Appointments View](/Screenshots/4 Appointments For Self?raw=true "Appointments View")
+![Appointments View](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/4 Appointments For Self?raw=true "Appointments View")
 
-![Create Appointment](/Screenshots/5 Appointments For Self 2.PNG?raw=true "Create Appointment")
+![Create Appointment](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/5 Appointments For Self 2.PNG?raw=true "Create Appointment")
 
 - Can now see the appointment in the list
 
-![Appointment](/Screenshots/6 Appointments For Self 3.PNG?raw=true "Appointment")
+![Appointment](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/6 Appointments For Self 3.PNG?raw=true "Appointment")
 
 - Also looks fine on iPhone.
 
-![iPhone View](/Screenshots/6 Appointments For Self 3 - iPhone view.PNG?raw=true "iPhone View")
+![iPhone View](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/6 Appointments For Self 3 - iPhone view.PNG?raw=true "iPhone View")
 
 - Go to Admin dropdown and select - Company Locations.
 
-![Admin Menu](/Screenshots/7 Admin Dropdown.PNG?raw=true "Admin Menu")
+![Admin Menu](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/7 Admin Dropdown.PNG?raw=true "Admin Menu")
 
 - Enter a location or set of locations and save (these aren't actually used anywhere in the system).
 
-![Company Locations](/Screenshots/8 Company Locations.PNG?raw=true "Company Locations")
+![Company Locations](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/8 Company Locations.PNG?raw=true "Company Locations")
 
 ## To Add employees
 - Go to the Admin dropdown and select 'Keys'. This will enable you to invite users.
 - Click Add a professional to company.
 
-![Add employee step 1](/Screenshots/9 Add Pro to Company 1.PNG?raw=true "Add employee step 1")
-![Add employee step 2](/Screenshots/9 Add Pro to Company 2.PNG?raw=true "Add employee step 2")
+![Add employee step 1](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 1.PNG?raw=true "Add employee step 1")
+![Add employee step 2](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 2.PNG?raw=true "Add employee step 2")
 
 
 - Copy the URL.
 
-![Add employee step 3](/Screenshots/9 Add Pro to Company 3.PNG?raw=true "Add employee step 3")
+![Add employee step 3](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 3.PNG?raw=true "Add employee step 3")
 
 - LOG OUT!!!
 - Now paste the URL into the browser. 
 - Select 'Yes'.
 
-![Join company](/Screenshots/9 Add Pro to Company 4.PNG?raw=true "Join company")
+![Join company](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 4.PNG?raw=true "Join company")
 
 - Register as a new user (yes, that should be improved!)
 
-![Join company](/Screenshots/9 Add Pro to Company 5.PNG?raw=true "Join company")
+![Join company](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 5.PNG?raw=true "Join company")
 
 - Enter professional details
 
-![Employee Details](/Screenshots/9 Add Pro to Company 6.PNG?raw=true "Employee Details")
+![Employee Details](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 6.PNG?raw=true "Employee Details")
 
 - It knows your are in that company. They can now create appointments for themself.
 
-![Employee Created](/Screenshots/9 Add Pro to Company 7.PNG?raw=true "Employee Created")
+![Employee Created](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 7.PNG?raw=true "Employee Created")
 
 - Click 'Appointments' and create an appointment as the employee for the ownwer to see.
 
-![Employee Appointment Booking](/Screenshots/9 Add Pro to Company 8.PNG?raw=true "Employee Appointment Booking")
+![Employee Appointment Booking](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/9 Add Pro to Company 8.PNG?raw=true "Employee Appointment Booking")
 
 ## Company owner accessing employees' diary.
 
 - Log out and log in as the owner.
 - You can now see the employees' diary.
 
-![Owner Access Appointments](/Screenshots/10 Owner accesses employee appointments 1.PNG?raw=true "Owner Access Appointments")
+![Owner Access Appointments](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/10 Owner accesses employee appointments 1.PNG?raw=true "Owner Access Appointments")
 
-![Owner Access Appointments 2](/Screenshots/10 Owner accesses employee appointments 2.PNG?raw=true "Owner Access Appointments 2")
+![Owner Access Appointments 2](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/10 Owner accesses employee appointments 2.PNG?raw=true "Owner Access Appointments 2")
 
 - You can now add appointments for the employee.
 
-![Owner Creating appointment for employee](/Screenshots/10 Owner creating appointment for employee.PNG?raw=true "Owner Creating appointment for employee")
+![Owner Creating appointment for employee](https://github.com/HockeyJustin/MultiTenantAppointmentsMvc/tree/master/Screenshots/Screenshots/10 Owner creating appointment for employee.PNG?raw=true "Owner Creating appointment for employee")
 
 
 
